@@ -3,5 +3,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def index(request):
+def home(request):
+    return render(request,'home.html')
+
+def shares(request):
+    
     return render(request, 'index.html')
