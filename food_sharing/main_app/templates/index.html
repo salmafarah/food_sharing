@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content%}
 
+<h1> Shares</h1>
 {%for food in Foods %}
 <div class="card">
     <div class="card-body">
-    <span class="title">{{ food.name }}</span>
+    <span class="title">{{food.name}}</span>
       {{food.description}}
       {{food.exp}}
       {{food.count}}
@@ -14,13 +15,6 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
+{% endfor %}
 
 {% endblock %}
