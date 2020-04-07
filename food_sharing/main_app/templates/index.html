@@ -1,4 +1,26 @@
 {% extends 'base.html' %}
 {% block content%}
-<h1> All the shares </h1>
+
+{%for food in Foods %}
+<div class="card">
+    <div class="card-body">
+    <span class="title">{{ food.name }}</span>
+      {{food.description}}
+      {{food.exp}}
+      {{food.count}}
+      {{food.location}}
+      {{food.contact_name}}
+      {{food.tele}}
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
