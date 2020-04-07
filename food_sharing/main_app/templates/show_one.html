@@ -2,20 +2,22 @@
 {% block content%}
 
 <h1> Shares</h1>
-{% for food in foods %}
 <div class="card">
-    <a href="/shares/{{food.id}}/">
     <div class="card-body">
     <h2 class="title">{{food.name}}</h2>
       <p>{{food.description}}</p>
       <p> Expiry Date: {{food.exp}}</p>
       <p>How much is available: {{food.count}}</p>
       <p>Pick-up location: {{food.location}}</p>
+      <p>Contact person: {{food.contact_name}}</p>
+      <p>Contact number: {{food.tele}}</p>
     </div>
-    </a>
   </div>
 
-{% endfor %}
+
+
+
+
 
 
 {% endblock %}

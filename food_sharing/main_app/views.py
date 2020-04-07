@@ -30,3 +30,10 @@ def home(request):
 def shares(request):
     foods = Food.objects.all()
     return render(request, 'index.html', {'foods':foods})
+
+def show_one(request, food_id):
+    food = Food.objects.get(id=food_id)
+    return render(request,'show_one.html',{'food':food})
+  
+
+
