@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 from .models import Food
 
 # Create your views here.
@@ -22,8 +23,6 @@ from .models import Food
 #     Food('Chips', 'Pack of chips', '2030/07/25','12 pak', 'https://imgur.com/jli7RNb.jpg','Toronto, Ontario', 'Sarah', '416-123-0976')
 # ]
 
-
-
 def home(request):
     return render(request,'home.html')
 
@@ -34,6 +33,8 @@ def shares(request):
 def show_one(request, food_id):
     food = Food.objects.get(id=food_id)
     return render(request,'show_one.html',{'food':food})
-  
 
-
+class FoodCreate(CreateView):
+    model = Food
+    fields = '__all__'
+    success_url = '/shares/'
