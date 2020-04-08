@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<h1 class="text-secondary"> Delete Item</h1>
+<h4> Are you sure you want to delete the item</h4>
+<form action="" method="POST">
+{% csrf_token %}
+<button type="submit" class="btn btn-primary">Delete</button>
+<a href="{% url 'shares' %}" class="card-link">Cancel</a>
+
+</form>
+
+{% endblock %}
