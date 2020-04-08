@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Food
 
 # Create your views here.
@@ -37,4 +37,12 @@ def show_one(request, food_id):
 class FoodCreate(CreateView):
     model = Food
     fields = '__all__'
+    success_url = '/shares/'
+
+class FoodUpdate(UpdateView): 
+    model = Food 
+    fields = '__all__'
+
+class FoodDelete(DeleteView):
+    model = Food 
     success_url = '/shares/'

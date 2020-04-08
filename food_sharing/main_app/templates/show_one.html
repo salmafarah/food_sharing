@@ -5,12 +5,14 @@
 <div class="card">
     <div class="card-body">
     <h2 class="title">{{food.name}}</h2>
-      <p>{{food.description}}</p>
-      <p> Expiry Date: {{food.exp}}</p>
-      <p>How much is available: {{food.count}}</p>
-      <p>Pick-up location: {{food.location}}</p>
-      <p>Contact person: {{food.contact_name}}</p>
-      <p>Contact number: {{food.tele}}</p>
+      <p class="card-text">{{food.description}}</p>
+      <p class="card-text"> Expiry Date: {{food.exp}}</p>
+      <p class="card-text">How much is available: {{food.count}}</p>
+      <p class="card-text">Pick-up location: {{food.location}}</p>
+      <p class="card-text">Contact person: {{food.contact_name}}</p>
+      <p class="card-text">Contact number: {{food.tele}}</p>
+      <a href="{% url 'update_food' food.id %}" class="card-link">Update Share</a>
+      <a href="{% url 'delete_food' food.id %}" class="card-link">Delete Share</a>
     </div>
   </div>
 

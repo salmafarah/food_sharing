@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content%}
+{% if object %}
+  <h1 class="text-secondary"> Edit Share</h1>
+{% else %}
 <h1> Create a Share</h1>
+{% endif %}
+
 <form>
   <div class="form-group">
     <label for="create_form">{{form.as_p}}</label>

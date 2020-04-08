@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse 
 
 # Create your models here.
 class Food(models.Model):
@@ -12,7 +13,11 @@ class Food(models.Model):
     tele = models.CharField(max_length=100)
 
 
+    def __str__(self):
+        return self.name 
 
+    def get_absolute_url(self):
+        return reverse('show_one', kwargs={'food_id': self.id})
 
 
 
