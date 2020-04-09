@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content%}
+
 {% if object %}
   <h1 class="text-secondary"> Edit Share</h1>
 {% else %}
 <h1> Create a Share</h1>
 {% endif %}
 
-<form>
+<form action='' method="POST">
+  {% csrf_token %}
   <div class="form-group">
     <label for="create_form">{{form.as_p}}</label>
     <input type="form" class="form-control" id="form">

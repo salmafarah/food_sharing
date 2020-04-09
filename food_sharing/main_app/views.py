@@ -37,7 +37,7 @@ def show_one(request, food_id):
 class FoodCreate(CreateView):
     model = Food
     fields = '__all__'
-    success_url = '/shares/'
+    success_url = '/shares/<int:food_id>/'
 
 class FoodUpdate(UpdateView): 
     model = Food 
