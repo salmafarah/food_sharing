@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block content%}
 
-<h1> Shares</h1>
-<div class="card">
-    <div class="card-body">
+<!-- <h1> Shares</h1>
+<div class="container">
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <img src="..." class="card-img" alt="...">
+    </div>
+   <div class="col col-md-4"></div> 
     <h2 class="title">{{food.name}}</h2>
       <p class="card-text">{{food.description}}</p>
       <p class="card-text"> Expiry Date: {{food.exp}}</p>
@@ -11,11 +16,47 @@
       <p class="card-text">Pick-up location: {{food.location}}</p>
       <p class="card-text">Contact person: {{food.contact_name}}</p>
       <p class="card-text">Contact number: {{food.tele}}</p>
-      <a href="{% url 'update_food' food.id %}" class="card-link">Update Share</a>
-      <a href="{% url 'delete_food' food.id %}" class="card-link">Delete Share</a>
+      <a href="{% url 'update_food' food.id %}" class="card-link"><button type="button" class="btn btn">Edit Share</button></a>
+      <a href="{% url 'delete_food' food.id %}" class="card-link"><button type="button" class="btn btn">Delete Share</button></a>
+      </div>
+    </div>
+  </div> 
+  -->
+
+  <h1> Shares</h1>
+
+  <div class="card-group">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+      <h5 class="title">{{food.name}}</h5>
+        <p class="card-text">{{food.description}}</p>
+        <p class="card-text"> Expiry Date: {{food.exp}}</p>
+        <p class="card-text">How much is available: {{food.count}}</p>
+        <p class="card-text">Pick-up location: {{food.location}}</p>
+        <p class="card-text">Contact person: {{food.contact_name}}</p>
+        <p class="card-text">Contact number: {{food.tele}}</p>
+        <a href="{% url 'update_food' food.id %}" class="card-link"><button type="button" class="btn btn">Edit Share</button></a>
+        <a href="{% url 'delete_food' food.id %}" class="card-link"><button type="button" class="btn btn">Delete Share</button></a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
     </div>
   </div>
 
+
+ <h1> Comments</h1>
+ <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 
 

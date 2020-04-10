@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Food
+from .forms import CommentsForm
 
 # Create your views here.
 
@@ -32,7 +33,9 @@ def shares(request):
 
 def show_one(request, food_id):
     food = Food.objects.get(id=food_id)
-    return render(request,'show_one.html',{'food':food})
+    comment_form = CommentsForm()
+    return render(request,'show_one.html',{'food':food, 'commnet_form': comment_form})
+
 
 class FoodCreate(CreateView):
     model = Food
