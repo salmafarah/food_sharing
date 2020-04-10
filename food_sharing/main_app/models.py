@@ -21,7 +21,7 @@ class Food(models.Model):
 
 class Comments(models.Model):
     content = models.CharField(max_length=100)
-    food = models.ForeignKey(Food, on_delete=models.CASCADE, default=0)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.id}"

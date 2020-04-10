@@ -3,19 +3,38 @@
 
 <h1> Shares</h1>
 {% for food in foods %}
-<div class="card">
-    <a href="/shares/{{food.id}}/">
-    <div class="card-body">
-    <h2 class="title">{{food.name}}</h2>
-      <p>{{food.description}}</p>
-      <p> Expiry Date: {{food.exp}}</p>
-      <p>How much is available: {{food.count}}</p>
-      <p>Pick-up location: {{food.location}}</p>
+<a style="text-decoration:none" href="/shares/{{food.id}}/"> 
+<div class="row row-cols-2">
+    <div class="col mb-1">
+      <div class="card">
+        <div class="card-body" >
+          <h2 class="title">{{food.name}}</h2>
+          <p>{{food.description}}</p>
+          <p> Expiry Date: {{food.exp}}</p>
+          <p>How much is available: {{food.count}}</p>
+          <p>Pick-up location: {{food.location}}</p>
+
+
+        </div>
+      </div>
     </div>
-    </a>
   </div>
+
 
 {% endfor %}
 
+
+<style>
+a{
+  color:black;
+}
+
+a:hover{
+  color:#ff9c59;
+}
+
+
+  
+</style>
 
 {% endblock %}
