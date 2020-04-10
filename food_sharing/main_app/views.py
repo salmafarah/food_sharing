@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Food
 from .forms import CommentsForm
@@ -34,7 +34,7 @@ def shares(request):
 def show_one(request, food_id):
     food = Food.objects.get(id=food_id)
     comment_form = CommentsForm()
-    return render(request,'show_one.html',{'food':food, 'commnet_form': comment_form})
+    return render(request,'show_one.html',{'food':food, 'comment_form': comment_form})
 
 
 class FoodCreate(CreateView):
@@ -49,3 +49,12 @@ class FoodUpdate(UpdateView):
 class FoodDelete(DeleteView):
     model = Food 
     success_url = '/shares/'
+
+def add_comment(request,food_id):
+    form = CommentsForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.food_id = food_id
+        new_comment.save()
+    return redirect('show_one', food_id=food_id)
+
