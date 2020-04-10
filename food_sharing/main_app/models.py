@@ -7,7 +7,6 @@ class Food(models.Model):
     description = models.TextField(max_length=200)
     exp = models.CharField("Expiry Date",max_length=10)
     count = models.CharField("How much is available", max_length=10)
-    image = models.ImageField 
     location = models.CharField("Pick-up location",max_length=100)
     contact_name = models.CharField("Contact person",max_length=100)
     tele = models.CharField("Contact number",max_length=100)
@@ -27,3 +26,9 @@ class Comments(models.Model):
         return f"{self.id}"
 
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE) 
+
+    def __str__(self):
+        return f"Photo for food_id: {self.food_id} @{self.url}"         

@@ -48,18 +48,17 @@
     </div>
   </div>
 
-
  <h1> Comments</h1>
  <form  action= "{% url 'add_comment' food.id %}" method="POST">
+  {% csrf_token %}
   <div class="form-group">
-    {% csrf_token %}
     {{comment_form.as_p}}
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <script>
-  
+
 </script>
 
 
