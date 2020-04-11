@@ -40,13 +40,25 @@
         <a href="{% url 'delete_food' food.id %}" class="card-link"><button type="button" class="btn btn">Delete Share</button></a>
       </div>
     </div>
+
+
     <div class="card">
-      <img src="" class="card-img-top" alt="">
+      {% for photo in food.photo_set.all%}
+      <img src="{{photo.url}}" class="img-fluid card-img-top" alt="user images">
+      {% empty %}
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
+        <h5 class="card-title" style="text-align: center;">No photo available</h5>
+        </div>
+        {% endfor %}
+      <hr>
+      <form action="{% url 'add_photo' food.id %}" enctype="multipart/form-data" method="POST" class="card-body">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <input type="submit" class="btn" value="Upload Photo">
+      </form>
     </div>
   </div>
+ 
 
  <h1> Comments</h1>
  <form  action= "{% url 'add_comment' food.id %}" method="POST">
@@ -54,12 +66,8 @@
   <div class="form-group">
     {{comment_form.as_p}}
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn">Submit</button>
 </form>
-
-<script>
-
-</script>
 
 
 

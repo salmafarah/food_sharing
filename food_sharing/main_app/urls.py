@@ -9,8 +9,6 @@ urlpatterns = [
     path('shares/<int:pk>/update/', views.FoodUpdate.as_view(),name='update_food'), 
     path('shares/<int:pk>/delete/', views.FoodDelete.as_view(), name='delete_food'),
     path('shares/<int:food_id>/add_comment/', views.add_comment, name='add_comment'),
-
-    # Images 
     path('shares/<int:food_id>/add_photo/', views.add_photo, name='add_photo') 
 
 ]
