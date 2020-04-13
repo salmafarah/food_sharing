@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse 
+from django.contrib.auth.models import User 
 
 # Create your models here.
 class Food(models.Model):
@@ -10,12 +11,17 @@ class Food(models.Model):
     location = models.CharField("Pick-up location",max_length=100)
     contact_name = models.CharField("Contact person",max_length=100)
     tele = models.CharField("Contact number",max_length=100)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name 
 
     def get_absolute_url(self):
         return reverse('show_one', kwargs={'food_id': self.id})
+    
+    def form_valid(self,form):
+        form.instance.user = self.request.user
+        return supper().form_valid(form) 
 
 
 class Comments(models.Model):

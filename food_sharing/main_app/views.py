@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm 
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Food, Comments, Photo
@@ -77,4 +79,22 @@ def add_photo(request, food_id):
         except: 
             print('An error ocurred uploding an image')
     return redirect ('show_one', food_id=food_id)
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST': 
+        form = UserCreationForm(request.POST)
+        if form.is_valid(): 
+            user = form.save()
+            login(request,user)
+            return redirect('index')
+        else: 
+            error_message = 'Invalid sign up - try again SiS'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+
+def myshares(request):
+    foods = Food.objects.all()
+    return render(request, 'myshares.html', {'foods': foods})
 
