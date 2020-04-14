@@ -51,7 +51,7 @@ def show_one(request, food_id):
 
 class FoodCreate(LoginRequiredMixin,CreateView):
     model = Food
-    fields = '__all__'
+    fields = '__all__' 
     success_url = '/shares/<int:food_id>/'
 
 class FoodUpdate(LoginRequiredMixin,UpdateView): 
@@ -99,6 +99,6 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 def myshares(request):
-    foods = Food.objects.all()
+    foods = Food.objects.filter(user=request.user)
     return render(request, 'myshares.html', {'foods': foods})
 

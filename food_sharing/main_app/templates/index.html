@@ -2,6 +2,12 @@
 {% block content%}
 
 <h1> Shares</h1>
+<div class="search">
+  <form method='GET'>
+    <input type='text' name='q'> 
+  </form>
+</div>
+<br>
 {% for food in foods %}
 <a style="text-decoration:none" href="/shares/{{food.id}}/"> 
 <div class="row row-cols-2">
