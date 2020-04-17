@@ -51,7 +51,7 @@ def show_one(request, food_id):
 
 class FoodCreate(LoginRequiredMixin,CreateView):
     model = Food
-    fields = '__all__' 
+    fields = '__all__'
     success_url = '/shares/<int:food_id>/'
 
 class FoodUpdate(LoginRequiredMixin,UpdateView): 
@@ -80,8 +80,8 @@ def add_photo(request, food_id):
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
             photo = Photo(url=url,food_id=food_id)
             photo.save()
-        except: 
-            print('An error ocurred uploding an image')
+        except Exception as e:
+            print(e)
     return redirect ('show_one', food_id=food_id)
 
 def signup(request):
@@ -91,7 +91,7 @@ def signup(request):
         if form.is_valid(): 
             user = form.save()
             login(request,user)
-            return redirect('index')
+            return redirect('shares')
         else: 
             error_message = 'Invalid sign up - try again SiS'
     form = UserCreationForm()
